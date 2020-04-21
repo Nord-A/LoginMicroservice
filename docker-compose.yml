@@ -9,24 +9,10 @@ services:
       - ./db/:/root/db/
   web:
     build: .
-    command: python manage.py runserver 0.0.0.0:8000 # 8000:8000 dette skal evt. ændres?
+    command: python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/code
     ports:
       - "8000:8000"
     depends_on:
       - db
-
-
-# fra youtube video part 1
-#version: '3'
-#services:
-  #python:
-    #build:
-      #context: .
-      #dockerfile: dockerfile
-    #volumes:
-      #- .:/loginMS:/loginMS
-    #ports:
-      #-8000:8000
-    #command: 
