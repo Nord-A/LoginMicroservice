@@ -42,12 +42,18 @@ INSTALLED_APPS = [
     'register.apps.RegisterConfig',
     'django.contrib.sites', # new
 
+    'rest_framework',
+    'rest_framework.authtoken',
+    'rest_auth',
+
+
     'allauth', # new
     'allauth.account', # new
     'allauth.socialaccount', # new
     'allauth.socialaccount.providers.google', # new
     'allauth.socialaccount.providers.github',
     'logpipe',
+    'users',
 ]
 
 MIDDLEWARE = [
@@ -58,6 +64,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django_session_timeout.middleware.SessionTimeoutMiddleware',
 ]
 
 ROOT_URLCONF = 'loginMS.urls'
@@ -146,6 +154,15 @@ SITE_ID = 1
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_USERNAME_REQUIRED = False
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.TokenAuthentication',
+    ]
+}
+
+SESSION_EXPIRE_SECONDS = 60  # 1 min
+SESSION_EXPIRE_AFTER_LAST_ACTIVITY = True
+SESSION_TIMEOUT_REDIRECT = 'http://127.0.0.1:8000/api/rest-auth/logout/'
 
 LOGPIPE = {
     # Required Settings
