@@ -3,6 +3,6 @@ psycopg2>=2.7,<3.0
 django-crispy-forms==1.9.0
 django-allauth==0.41
 django-logpipe==1.0.0
-djangorestframework==3.11.0
+djangorestframework==3.11.2
 django-rest-auth==0.9.5
 django-session-timeout==0.1.0
